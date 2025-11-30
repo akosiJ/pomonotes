@@ -1,0 +1,60 @@
+<div class="flex min-h-screen bg-gray-100">
+  <p-drawer
+    [(visible)]="drawerVisibleLeft"
+    [modal]="false"
+    [showCloseIcon]="false"
+    styleClass="w-64 bg-gray-900 shadow-xl p-0"
+  >
+    <div class="h-full flex flex-col p-4 text-white">
+      <h2 class="text-xl font-bold mb-4">Left Menu</h2>
+      <p>Navigation links here...</p>
+    </div>
+  </p-drawer>
+
+  <div class="flex-grow flex flex-col">
+    <header class="flex items-center justify-between p-4 bg-white shadow-md">
+      <div class="flex items-center space-x-2">
+        <p-button
+          (onClick)="drawerVisibleLeft = !drawerVisibleLeft"
+          icon="pi pi-bars"
+          [rounded]="true"
+          [text]="true"
+          severity="secondary"
+          label="Left"
+          styleClass="w-20"
+        ></p-button>
+
+        <h1 class="text-2xl font-semibold text-gray-800">Middle Panel</h1>
+      </div>
+
+      <p-button
+        (onClick)="drawerVisibleRight = !drawerVisibleRight"
+        icon="pi pi-bars"
+        [rounded]="true"
+        [text]="true"
+        severity="secondary"
+        label="Right"
+        styleClass="w-20"
+      ></p-button>
+    </header>
+
+    <main class="flex-grow p-6 overflow-auto">
+      <div class="bg-white p-6 rounded-lg shadow-lg">
+        <p class="text-gray-700">Central Application Content (Fluid Width)</p>
+      </div>
+    </main>
+  </div>
+
+  <p-drawer
+    [(visible)]="drawerVisibleRight"
+    [position]="'right'"
+    [modal]="false"
+    [showCloseIcon]="false"
+    styleClass="w-64 bg-gray-100 shadow-xl p-0"
+  >
+    <div class="h-full flex flex-col p-4">
+      <h2 class="text-xl font-bold mb-4 text-gray-800">Right Settings</h2>
+      <p class="text-gray-600">Settings and auxiliary tools here...</p>
+    </div>
+  </p-drawer>
+</div>
