@@ -1,0 +1,113 @@
+/* Dashboard grid layout variables and transitions */
+.dashboard-grid {
+	--left-width: 16rem;   /* expanded left width */
+	--left-collapsed: 4rem; /* collapsed left width */
+	--right-width: 20rem;  /* expanded right width */
+	--right-collapsed: 6rem; /* collapsed right width */
+
+	position: relative;
+	height: 100vh;
+	width: 100%;
+}
+
+/* left / right state modifiers control the CSS variables */
+.dashboard-grid.left-collapsed {
+	--left-width: var(--left-collapsed);
+}
+
+.dashboard-grid.right-collapsed {
+	--right-width: var(--right-collapsed);
+}
+
+/* Panels sizing and transitions */
+.left-panel {
+	width: var(--left-width);
+	min-width: var(--left-width);
+	height: 100%;
+	left: 0;
+	transition: width 300ms ease, min-width 300ms ease, transform 300ms ease;
+	z-index: 40; /* sit on top of center content */
+	overflow: hidden;
+}
+
+.right-panel {
+	width: var(--right-width);
+	min-width: var(--right-width);
+	height: 100%;
+	right: 0;
+	transition: width 300ms ease, min-width 300ms ease, transform 300ms ease;
+	z-index: 40;
+	overflow: hidden;
+}
+
+.center-panel {
+	/* center content sits between the two fixed panels */
+	margin-left: var(--left-width);
+	margin-right: var(--right-width);
+	transition: margin 300ms ease;
+	min-height: 100%;
+}
+
+/* collapsed content niceties */
+.left-panel .p-button[label=""] .p-button-label,
+.left-panel .p-button[label=""] .p-button-icon {
+	/* hide labels or scale down content when collapsed */
+	display: none;
+}
+
+/* Responsive: small screens — convert left panel to overlay / fully collapsed so center is full width */
+@media (max-width: 768px) {
+	.dashboard-grid {
+		--left-width: 0px;
+		--right-width: 0px;
+	}
+
+	.left-panel,
+	.right-panel {
+		width: 0;
+		min-width: 0;
+		visibility: hidden;
+		pointer-events: none;
+	}
+
+	.center-panel {
+		margin-left: 0;
+		margin-right: 0;
+	}
+}
+
+/* Small visual polish */
+.left-panel, .right-panel {
+	box-shadow: 0 0 16px rgba(0,0,0,0.35);
+}
+
+/* src/app/dashboard/dashboard.component.css */
+:host {
+  display: block;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Smooth transitions for sidebar */
+aside {
+  transition: width 0.3s ease-in-out;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a1a1a1;
+}
