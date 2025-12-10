@@ -1,6 +1,5 @@
 import { Component, signal, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { ThemeService } from './services/theme.service';
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet],
@@ -10,10 +9,9 @@ import { ThemeService } from './services/theme.service';
 export class App implements OnInit {
   protected readonly title = signal('pomonotes');
 
-  constructor(private themeService: ThemeService) {}
+  constructor() {}
 
   ngOnInit(): void {
     // Apply the theme when the app initializes
-    this.themeService.applyTheme();
   }
 }

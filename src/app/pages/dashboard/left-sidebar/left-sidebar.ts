@@ -2,19 +2,19 @@ import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DashboardService } from '../dashboard.service';
 import { ButtonModule } from 'primeng/button';
-import { ThemeService } from '../../../services/theme.service';
+import { InputTextModule } from 'primeng/inputtext';
 
 @Component({
   selector: 'app-left-sidebar',
   standalone: true,
-  imports: [CommonModule, ButtonModule],
+  imports: [CommonModule, ButtonModule, InputTextModule],
   templateUrl: './left-sidebar.html',
   styleUrls: ['./left-sidebar.css'],
 })
 export class LeftSidebarComponent {
   @Input() isCollapsed: boolean = false;
 
-  constructor(public dashboardService: DashboardService, public themeService: ThemeService) {}
+  constructor(public dashboardService: DashboardService) {}
 
   // Navigation items
   navItems = [
