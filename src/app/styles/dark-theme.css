@@ -1,0 +1,96 @@
+:root {
+  /* Light theme colors (default) */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-tertiary: #e9ecef;
+  --text-primary: #212529;
+  --text-secondary: #6c757d;
+  --text-tertiary: #adb5bd;
+  --border-color: #dee2e6;
+  --hover-bg: #f1f3f5;
+  --active-bg: #e9ecef;
+  --sidebar-bg: #ffffff;
+  --sidebar-border: #dee2e6;
+  --sidebar-hover: #f8f9fa;
+  --sidebar-active: #e9ecef;
+  --card-bg: #ffffff;
+  --card-border: #dee2e6;
+  --input-bg: #f8f9fa;
+  --input-border: #ced4da;
+}
+
+.dark-theme {
+  /* Dark theme colors */
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --bg-tertiary: #3a3a3a;
+  --text-primary: #f8f9fa;
+  --text-secondary: #dee2e6;
+  --text-tertiary: #adb5bd;
+  --border-color: #495057;
+  --hover-bg: #212529;
+  --active-bg: #343a40;
+  --sidebar-bg: #1a1a1a;
+  --sidebar-border: #495057;
+  --sidebar-hover: #2d2d2d;
+  --sidebar-active: #343a40;
+  --card-bg: #2d2d2d;
+  --card-border: #495057;
+  --input-bg: #212529;
+  --input-border: #495057;
+
+  /* PrimeNG component overrides for dark theme */
+  .p-button {
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+  }
+
+  .p-button:hover {
+    background-color: var(--hover-bg);
+  }
+
+  .p-button:focus {
+    box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.25);
+  }
+}
+
+/* Apply theme variables to common elements */
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Sidebar specific styling */
+app-left-sidebar {
+  background-color: var(--sidebar-bg);
+  border-right: 1px solid var(--sidebar-border);
+}
+
+/* Input fields */
+input[type="text"] {
+  background-color: var(--input-bg);
+  color: var(--text-primary);
+  border-color: var(--input-border);
+}
+
+/* Navigation items */
+nav ul li a {
+  color: var(--text-secondary);
+}
+
+nav ul li a:hover {
+  background-color: var(--sidebar-hover);
+  color: var(--text-primary);
+}
+
+nav ul li a.bg-blue-50 {
+  background-color: var(--sidebar-active) !important;
+  color: var(--text-primary) !important;
+}
+
+/* User info section */
+.user-info {
+  border-top: 1px solid var(--sidebar-border);
+}

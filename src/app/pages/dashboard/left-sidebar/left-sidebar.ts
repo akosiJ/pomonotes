@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DashboardService } from '../dashboard.service';
 import { ButtonModule } from 'primeng/button';
+import { ThemeService } from '../../../services/theme.service';
 
 @Component({
   selector: 'app-left-sidebar',
@@ -13,7 +14,10 @@ import { ButtonModule } from 'primeng/button';
 export class LeftSidebarComponent {
   @Input() isCollapsed: boolean = false;
 
-  constructor(public dashboardService: DashboardService) {}
+  constructor(
+    public dashboardService: DashboardService,
+    public themeService: ThemeService
+  ) {}
 
   // Navigation items
   navItems = [
@@ -29,5 +33,10 @@ export class LeftSidebarComponent {
 
   togglePane(): void {
     this.dashboardService.toggleLeftPane();
+  }
+
+  toggleTheme(): void {
+    this.themeService.toggleTheme();
+    this.themeService.applyTheme();
   }
 }

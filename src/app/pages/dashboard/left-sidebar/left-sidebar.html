@@ -63,4 +63,19 @@
       </div>
     </div>
   </div>
+
+  <!-- Theme Toggle Button (hidden when collapsed) -->
+  <div class="p-4 border-t border-gray-100" *ngIf="!isCollapsed">
+    <button
+      pButton
+      pRipple
+      [icon]="themeService.isDarkTheme ? 'pi pi-sun' : 'pi pi-moon'"
+      class="w-full p-button-text p-button-sm"
+      (click)="toggleTheme()"
+      [title]="themeService.isDarkTheme ? 'Switch to Light Theme' : 'Switch to Dark Theme'">
+      <span class="ml-2">
+        {{ themeService.isDarkTheme ? 'Light Theme' : 'Dark Theme' }} Yeah!
+      </span>
+    </button>
+  </div>
 </div>
