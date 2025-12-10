@@ -1,60 +1,112 @@
-<div class="flex min-h-screen bg-gray-100">
-  <p-drawer
-    [(visible)]="drawerVisibleLeft"
-    [modal]="false"
-    [showCloseIcon]="false"
-    styleClass="w-64 bg-gray-900 shadow-xl p-0"
-  >
-    <div class="h-full flex flex-col p-4 text-white">
-      <h2 class="text-xl font-bold mb-4">Left Menu</h2>
-      <p>Navigation links here...</p>
-    </div>
-  </p-drawer>
+<!-- Mobile Sidebars (PrimeNG) -->
+<p-drawer 
+  [(visible)]="isLeftPaneVisible" 
+  position="left" 
+  [showCloseIcon]="false"
+  [modal]="true"
+  [dismissible]="true"
+  styleClass="w-80 md:w-96"
+  *ngIf="isMobile">
+  <app-left-sidebar [isCollapsed]="false"></app-left-sidebar>
+</p-drawer>
 
-  <div class="flex-grow flex flex-col">
-    <header class="flex items-center justify-between p-4 bg-white shadow-md">
-      <div class="flex items-center space-x-2">
-        <p-button
-          (onClick)="drawerVisibleLeft = !drawerVisibleLeft"
-          icon="pi pi-bars"
-          [rounded]="true"
-          [text]="true"
-          severity="secondary"
-          label="Left"
-          styleClass="w-20"
-        ></p-button>
+<p-drawer 
+  [(visible)]="isRightPaneVisible" 
+  position="right" 
+  [showCloseIcon]="false"
+  [modal]="true"
+  [dismissible]="true"
+  styleClass="w-80 md:w-96"
+  *ngIf="isMobile">
+  <app-right-sidebar></app-right-sidebar>
+</p-drawer> 
 
-        <h1 class="text-2xl font-semibold text-gray-800">Middle Panel</h1>
-      </div>
-
-      <p-button
-        (onClick)="drawerVisibleRight = !drawerVisibleRight"
+<!-- Main Dashboard Layout -->
+<div class="flex flex-col min-h-screen bg-gray-50">
+  <!-- Fixed Header -->
+  <header class="bg-white shadow-sm border-b border-gray-200 px-4 py-3 flex items-center justify-between sticky top-0 z-10">
+    <!-- Left: Mobile Menu Button -->
+    <div class="flex items-center space-x-3">
+      <button 
+        *ngIf="isMobile"
+        pButton 
+        pRipple
         icon="pi pi-bars"
-        [rounded]="true"
-        [text]="true"
-        severity="secondary"
-        label="Right"
-        styleClass="w-20"
-      ></p-button>
-    </header>
-
-    <main class="flex-grow p-6 overflow-auto">
-      <div class="bg-white p-6 rounded-lg shadow-lg">
-        <p class="text-gray-700">Central Application Content (Fluid Width)</p>
+        class="p-button-text p-button-rounded"
+        (click)="showLeftPaneMobile()"
+        aria-label="Open left menu">
+      </button>
+      
+      <!-- Logo/Brand -->
+      <div class="flex items-center space-x-2">
+        <i class="pi pi-code text-xl text-blue-600"></i>
+        <span class="font-semibold text-gray-800 hidden sm:inline">CodeDashboard</span>
       </div>
-    </main>
-  </div>
-
-  <p-drawer
-    [(visible)]="drawerVisibleRight"
-    [position]="'right'"
-    [modal]="false"
-    [showCloseIcon]="false"
-    styleClass="w-64 bg-gray-100 shadow-xl p-0"
-  >
-    <div class="h-full flex flex-col p-4">
-      <h2 class="text-xl font-bold mb-4 text-gray-800">Right Settings</h2>
-      <p class="text-gray-600">Settings and auxiliary tools here...</p>
     </div>
-  </p-drawer>
+
+    <!-- Center: Title (hidden on mobile) -->
+    <h1 class="text-lg font-semibold text-gray-700 hidden md:block">
+      Project Dashboard
+    </h1>
+
+    <!-- Right: Actions & Mobile Right Menu Button -->
+    <div class="flex items-center space-x-2">
+      <!-- Mobile Right Menu Button -->
+      <button 
+        *ngIf="isMobile"
+        pButton 
+        pRipple
+        icon="pi pi-ellipsis-h"
+        class="p-button-text p-button-rounded"
+        (click)="showRightPaneMobile()"
+        aria-label="Open right menu">
+      </button>
+      
+      <!-- Desktop Right Pane Toggle -->
+      <button 
+        *ngIf="!isMobile"
+        pButton 
+        pRipple
+        [icon]="isRightPaneCollapsed ? 'pi pi-chevron-left' : 'pi pi-chevron-right'"
+        class="p-button-text p-button-rounded"
+        (click)="dashboardService.toggleRightPane()"
+        [title]="isRightPaneCollapsed ? 'Show right pane' : 'Hide right pane'">
+      </button>
+      
+      <!-- User Avatar -->
+      <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
+        <i class="pi pi-user text-blue-600"></i>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Area -->
+  <main class="flex flex-1 overflow-hidden">
+    <!-- Desktop Left Pane -->
+    <aside 
+      *ngIf="!isMobile"
+      [ngClass]="{
+        'w-16': isLeftPaneCollapsed,
+        'w-64': !isLeftPaneCollapsed
+      }"
+      class="bg-white border-r border-gray-200 transition-all duration-300 ease-in-out overflow-hidden flex-shrink-0">
+      <app-left-sidebar [isCollapsed]="isLeftPaneCollapsed"></app-left-sidebar>
+    </aside>
+
+    <!-- Center Pane (Main Content) -->
+    <section class="flex-1 overflow-auto">
+      <app-main-content></app-main-content>
+    </section>
+
+    <!-- Desktop Right Pane -->
+    <aside 
+      *ngIf="!isMobile"
+      [ngClass]="{
+        'w-16': isRightPaneCollapsed,
+        'w-80': !isRightPaneCollapsed
+      }"
+      class="bg-white border-l border-gray-200 transition-all duration-300 ease-in-out overflow-hidden flex-shrink-0">
+      <app-right-sidebar></app-right-sidebar>
+    </aside>
+  </main>
 </div>
