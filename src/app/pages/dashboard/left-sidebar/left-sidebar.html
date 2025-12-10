@@ -1,4 +1,4 @@
-<div class="flex flex-col overflow-auto left-sidebar-container  h-full border border-gray-100 rounded-lg">
+<div class="flex flex-col overflow-auto left-sidebar-container h-full border border-gray-100">
   <!-- Top Group: Search and Collapse Toggle on same row -->
   <div class="p-4 border-b border-gray-100" *ngIf="!isCollapsed">
     <div class="flex items-center space-x-2">
@@ -7,9 +7,8 @@
         <i class="pi pi-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
         <input 
           type="text" 
-          pInputText
           placeholder="Search..."
-          class="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+          class="w-full pl-10 pr-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
       </div>
       <!-- Collapse/Expand Toggle Button -->
       <button 
@@ -55,11 +54,11 @@
           
           
           <!-- Badge for active item -->
-          <!-- <span 
+          <span 
             *ngIf="item.active && !isCollapsed"
             class="ml-auto bg-blue-600 text-white text-xs px-2 py-1 rounded-full">
             5
-          </span> -->
+          </span>
         </a>
       </li>
     </ul>
@@ -69,15 +68,15 @@
   <div class="border-t border-gray-100 mt-auto" *ngIf="!isCollapsed">
     <!-- Theme Toggle Button -->
     <div class="p-4 border-b border-gray-100">
-      <!-- todo : fix, detect the theme change -->
       <button
         pButton
         pRipple
-        [icon]="true ? 'pi pi-sun' : 'pi pi-moon'"
+        [icon]="themeService.isDarkTheme ? 'pi pi-sun' : 'pi pi-moon'"
         class="w-full p-button-text p-button-sm"
         (click)="toggleTheme()"
-        [title]="true ? 'Switch to Light Theme' : 'Switch to Dark Theme'">
+        [title]="themeService.isDarkTheme ? 'Switch to Light Theme' : 'Switch to Dark Theme'">
         <span class="ml-2">
+          {{ themeService.isDarkTheme ? 'Light Theme' : 'Dark Theme' }}
         </span>
       </button>
     </div>

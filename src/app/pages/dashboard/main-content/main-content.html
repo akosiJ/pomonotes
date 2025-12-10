@@ -3,8 +3,8 @@
   <!-- Content Header with Actions -->
   <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
     <div>
-      <h1 class="text-2xl md:text-3xl font-bold mb-2">Project Notebook</h1>
-      <p class="">Your central workspace for notes and documentation</p>
+      <h1 class="text-2xl md:text-3xl font-bold text-gray-800 mb-2">Project Notebook</h1>
+      <p class="text-gray-600">Your central workspace for notes and documentation</p>
     </div>
     
     <div class="flex items-center space-x-2">
@@ -59,22 +59,22 @@
       <!-- Markdown Preview Area -->
       <div class="prose max-w-none min-h-[400px] mb-8">
         <!-- This would typically use a markdown renderer, but we'll simulate it -->
-        <div class="whitespace-pre-line font-mono  leading-relaxed">
+        <div class="whitespace-pre-line font-mono text-gray-800 leading-relaxed">
           {{ noteContent }}
         </div>
       </div>
 
       <!-- Attachments Section -->
       <div class="mt-8 pt-8 border-t border-gray-200">
-        <h3 class="text-lg font-semibold  mb-4">Attachments</h3>
+        <h3 class="text-lg font-semibold text-gray-800 mb-4">Attachments</h3>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div *ngFor="let doc of documents" class="flex items-center p-3 rounded-lg hover:bg-gray-50 transition-colors">
+          <div *ngFor="let doc of documents" class="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
             <div class="w-10 h-10 rounded bg-blue-100 flex items-center justify-center mr-3">
               <i class="pi pi-file text-blue-600"></i>
             </div>
             <div class="flex-1">
-              <p class="font-medium text-sm ">{{ doc.name }}</p>
-              <p class="text-xs">{{ doc.size }} • Updated {{ doc.updated }}</p>
+              <p class="font-medium text-sm text-gray-800">{{ doc.name }}</p>
+              <p class="text-xs text-gray-500">{{ doc.size }} • Updated {{ doc.updated }}</p>
             </div>
             <button 
               pButton 
@@ -88,7 +88,7 @@
     </div>
 
     <!-- Notebook Footer with Input -->
-    <div class=" border-t border-gray-200 px-6 py-4">
+    <div class="bg-gray-50 border-t border-gray-200 px-6 py-4">
       <div class="flex items-center space-x-3">
         <!-- Emoji/Attachment Buttons -->
         <div class="flex items-center space-x-1">
@@ -135,30 +135,30 @@
 
   <!-- Quick Stats -->
   <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-    <div class=" p-6 rounded-xl shadow-sm border border-gray-200">
+    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
       <div class="flex items-center justify-between mb-4">
-        <h3 class="font-semibold ">Active Projects</h3>
+        <h3 class="font-semibold text-gray-800">Active Projects</h3>
         <i class="pi pi-folder text-blue-500"></i>
       </div>
-      <p class="text-3xl font-bold ">12</p>
+      <p class="text-3xl font-bold text-gray-800">12</p>
       <p class="text-sm text-gray-500 mt-2">+2 from last week</p>
     </div>
     
-    <div class=" p-6 rounded-xl shadow-sm border border-gray-200">
+    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
       <div class="flex items-center justify-between mb-4">
-        <h3 class="font-semibold ">Tasks Completed</h3>
+        <h3 class="font-semibold text-gray-800">Tasks Completed</h3>
         <i class="pi pi-check-circle text-green-500"></i>
       </div>
-      <p class="text-3xl font-bold ">48</p>
+      <p class="text-3xl font-bold text-gray-800">48</p>
       <p class="text-sm text-gray-500 mt-2">85% completion rate</p>
     </div>
     
-    <div class=" p-6 rounded-xl shadow-sm border border-gray-200">
+    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
       <div class="flex items-center justify-between mb-4">
-        <h3 class="font-semibold ">Team Members</h3>
+        <h3 class="font-semibold text-gray-800">Team Members</h3>
         <i class="pi pi-users text-purple-500"></i>
       </div>
-      <p class="text-3xl font-bold ">8</p>
+      <p class="text-3xl font-bold text-gray-800">8</p>
       <p class="text-sm text-gray-500 mt-2">All active</p>
     </div>
   </div>

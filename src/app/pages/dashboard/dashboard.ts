@@ -117,9 +117,5 @@ export class Dashboard implements OnInit, OnDestroy {
   showRightPaneMobile(): void {
     this.dashboardService.isRightPaneVisible = true;
   }
-    toggleTheme(): void {
-     const element = document.querySelector('html');
-    element?.classList.toggle('my-app-dark');
-  }
 }
 
