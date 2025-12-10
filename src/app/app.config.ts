@@ -10,10 +10,13 @@ export const appConfig: ApplicationConfig = {
     provideBrowserGlobalErrorListeners(),
     provideRouter(routes),
     provideAnimationsAsync(),
-        providePrimeNG({
-            theme: {
-                preset: Lara
-            }
-        })
-  ]
+    providePrimeNG({
+      theme: {
+        preset: Lara,
+        options: {
+          darkModeSelector: '.my-app-dark',
+        },
+      },
+    }),
+  ],
 };

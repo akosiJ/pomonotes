@@ -1,0 +1,20 @@
+/* Navigation spacing */
+nav {
+  margin-bottom: 1rem;
+}
+
+/* Bottom group spacing */
+.bottom-group {
+  margin-top: auto;
+  border-top: 1px solid #e5e7eb;
+}
+
+/* Theme toggle and user info spacing */
+.theme-toggle-section {
+  padding: 1rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.user-info-section {
+  padding: 1rem;
+}

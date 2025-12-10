@@ -88,6 +88,24 @@
   overflow: hidden;
 }
 
+/* Main layout height constraints */
+main {
+  height: calc(100vh - 64px); /* Account for header height */
+  min-height: calc(100vh - 64px);
+}
+
+/* Sidebar height constraints */
+aside {
+  height: calc(100vh - 64px); /* Account for header height */
+  min-height: calc(100vh - 64px);
+}
+
+/* Center panel height constraints */
+.center-panel {
+  height: calc(100vh - 64px);
+  min-height: calc(100vh - 64px);
+}
+
 /* Smooth transitions for sidebar */
 aside {
   transition: width 0.3s ease-in-out;
