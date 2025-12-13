@@ -42,5 +42,7 @@ __screenshots__/
 .DS_Store
 Thumbs.db
 
-# Private keys
-/src/app/environments
+# Private keys (environment configuration files)
+# Ignore Angular environment files that may contain secrets
+/src/environments
+/src/environments/*.ts
