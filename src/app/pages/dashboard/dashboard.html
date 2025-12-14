@@ -5,7 +5,6 @@
   [showCloseIcon]="false"
   [modal]="true"
   [dismissible]="true"
-  styleClass="w-80 md:w-96"
   *ngIf="isMobile">
   <app-left-sidebar [isCollapsed]="false"></app-left-sidebar>
 </p-drawer>
@@ -22,9 +21,9 @@
 </p-drawer> 
 
 <!-- Main Dashboard Layout -->
-<div class="flex flex-col min-h-screen">
+<div class="flex flex-col h-screen overflow-hidden">
   <!-- Fixed Header -->
-  <header class="shadow-sm border-b border-gray-200 px-4 py-3 flex items-center justify-between sticky top-0 z-10">
+  <header class="shadow-sm px-4 py-3 flex items-center justify-between sticky top-0 z-10">
     <!-- Left: Mobile Menu Button -->
     <div class="flex items-center space-x-3">
       <button 
@@ -40,17 +39,17 @@
       <!-- Logo/Brand -->
       <div class="flex items-center space-x-2">
         <i class="pi pi-code text-xl text-blue-600"></i>
-        <span class="font-semibold text-gray-800 hidden sm:inline">CodeDashboard</span>
+        <span class="font-semibold text-gray-800 hidden sm:inline">PomoNotes</span>
       </div>
     </div>
 
     <!-- Center: Title (hidden on mobile) -->
     <h1 class="text-lg font-semibold text-gray-700 hidden md:block">
-      Project Dashboard
+      Dashboard
     </h1>
 
     <!-- Right: Actions & Mobile Right Menu Button -->
-    <div class="flex items-center space-x-2">
+    <div class="flex items-center space-x-2 border border-blue-500">
       <!-- Mobile Right Menu Button -->
       <button 
         *ngIf="isMobile"
@@ -89,7 +88,7 @@
         'w-16': isLeftPaneCollapsed,
         'w-64': !isLeftPaneCollapsed
       }"
-      class="border-r border-gray-200 transition-all duration-300 ease-in-out overflow-hidden flex-shrink-0">
+      class="transition-all duration-300 ease-in-out">
       <app-left-sidebar [isCollapsed]="isLeftPaneCollapsed"></app-left-sidebar>
     </aside>
 
@@ -105,7 +104,7 @@
         'w-16': isRightPaneCollapsed,
         'w-80': !isRightPaneCollapsed
       }"
-      class="border-l border-gray-200 transition-all duration-300 ease-in-out overflow-hidden flex-shrink-0">
+      class="transition-all duration-300 ease-in-out overflow-hidden">
       <app-right-sidebar></app-right-sidebar>
     </aside>
   </main>

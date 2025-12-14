@@ -9,15 +9,12 @@ import { ThemeService } from '../../../services/theme.service';
   standalone: true,
   imports: [CommonModule, ButtonModule],
   templateUrl: './left-sidebar.html',
-  styleUrls: ['./left-sidebar.css']
+  styleUrls: ['./left-sidebar.css'],
 })
 export class LeftSidebarComponent {
   @Input() isCollapsed: boolean = false;
 
-  constructor(
-    public dashboardService: DashboardService,
-    public themeService: ThemeService
-  ) {}
+  constructor(public dashboardService: DashboardService, public themeService: ThemeService) {}
 
   // Navigation items
   navItems = [
@@ -28,7 +25,7 @@ export class LeftSidebarComponent {
     { icon: 'pi pi-chart-bar', label: 'Analytics' },
     { icon: 'pi pi-cog', label: 'Settings' },
     { icon: 'pi pi-users', label: 'Team' },
-    { icon: 'pi pi-question-circle', label: 'Help' }
+    { icon: 'pi pi-question-circle', label: 'Help' },
   ];
 
   togglePane(): void {
@@ -36,7 +33,8 @@ export class LeftSidebarComponent {
   }
 
   toggleTheme(): void {
-    this.themeService.toggleTheme();
-    this.themeService.applyTheme();
+     const element = document.querySelector('html');
+    element?.classList.toggle('my-app-dark');
+
   }
 }
